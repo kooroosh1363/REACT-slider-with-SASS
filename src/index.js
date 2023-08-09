@@ -12,12 +12,12 @@ root.render(
 );
 
 export const imageProduct = [
-  require('./assets/1.jpeg'),
-  require('./assets/2.jpg'),
-  require('./assets/3.jpg'),
-  require('./assets/4.jpg'),
-  require('./assets/5.jpeg'),
-  require('./assets/6.jpg')
+  require('./assets/images/1.jpeg'),
+  require('./assets/images/2.jpg'),
+  require('./assets/images/3.jpg'),
+  require('./assets/images/4.jpg'),
+  require('./assets/images/5.jpeg'),
+  require('./assets/images/6.jpg')
 ]
 
 // If you want to start measuring performance in your app, pass a function
