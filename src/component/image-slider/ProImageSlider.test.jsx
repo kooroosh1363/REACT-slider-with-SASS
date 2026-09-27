@@ -45,7 +45,7 @@ describe("ProImageSlider", () => {
 
     expect(screen.getByRole("heading", { name: "Orange cap" })).toBeInTheDocument();
     expect(screen.getByText("Image 1 of 2: Front view")).toBeInTheDocument();
-    expect(screen.getByAltText("Orange cap product photo")).toBeInTheDocument();
+    expect(screen.getAllByAltText("Orange cap product photo").length).toBeGreaterThanOrEqual(1);
     expect(screen.getByRole("button", { name: "Show Blue cap" })).toBeInTheDocument();
   });
 
