@@ -1,70 +1,158 @@
-# Getting Started with Create React App
+# GalleryLens — Accessible React Product Gallery
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Quality](https://github.com/kooroosh1363/REACT-slider-with-SASS/actions/workflows/quality.yml/badge.svg)](https://github.com/kooroosh1363/REACT-slider-with-SASS/actions/workflows/quality.yml)
 
-## Available Scripts
+GalleryLens modernizes the original 2023 React/Sass slider exercise into a real product-gallery component built with React 18, Swiper 10, and modular Sass.
 
-In the project directory, you can run:
+## Why this upgrade matters
 
-### `npm start`
+The original repository already included React, Sass, Swiper, and six product images, but the gallery component itself only rendered:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```jsx
+<div>ImageSliderPro</div>
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The maintained version turns that placeholder into an actual reusable gallery.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- primary Swiper product carousel
+- thumbnail navigation
+- keyboard navigation
+- accessible previous/next announcements
+- active-slide status
+- semantic product-image alternative text
+- native dialog detail view
+- responsive layout
+- reduced-motion handling
+- no autoplay
+- structured gallery data
+- modular Sass tokens
+- pure gallery state utilities
+- React interaction tests
+- production CI
+- manual GitHub Pages deployment
 
-### `npm run build`
+## Architecture
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```text
+galleryItems.js
+      │
+      ▼
+gallery-utils.js
+      │
+      ▼
+ProImageSlider.jsx
+      ├── main Swiper
+      ├── thumbnail Swiper
+      ├── keyboard navigation
+      ├── status announcement
+      └── native dialog detail view
+      │
+      ▼
+App.jsx
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Gallery policy such as index clamping, status text, and item normalization lives outside the React component so it can be tested independently.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Accessibility decisions
 
-### `npm run eject`
+The maintained component includes:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- descriptive alt text for every product image
+- keyboard-enabled Swiper navigation
+- explicit previous/next messages
+- polite active-slide status text
+- real buttons for thumbnails
+- `aria-current` on the selected thumbnail
+- a labelled native `<dialog>`
+- visible focus indicators
+- reduced-motion handling
+- no autoplay
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Autoplay is intentionally disabled because a product gallery should remain user-controlled.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Styling
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Sass is separated into:
 
-## Learn More
+- shared design tokens in `src/styles/_tokens.scss`
+- page composition in `src/App.scss`
+- gallery component styles in `ProImageSlider.scss`
+- global foundation in `src/index.scss`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The original external Google Fonts import was removed.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Local development
 
-### Code Splitting
+```bash
+npm ci
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Open:
 
-### Analyzing the Bundle Size
+```text
+http://localhost:3000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Tests
 
-### Making a Progressive Web App
+```bash
+npm test -- --watchAll=false
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The suite covers:
 
-### Advanced Configuration
+- slide-index clamping
+- accessible status generation
+- malformed gallery-data filtering
+- empty gallery state
+- initial image/status rendering
+- thumbnail-driven state changes
+- opening the detail dialog
+- application-level gallery scope
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Production build
 
-### Deployment
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Create React App outputs the production bundle into `build/`.
 
-### `npm run build` fails to minify
+## CI
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+GitHub Actions runs:
+
+```text
+npm ci
+  ↓
+React/Jest tests
+  ↓
+production build
+```
+
+A merge is only performed after the quality workflow succeeds.
+
+## GitHub Pages
+
+A manual Pages workflow is included. Enable Pages once in:
+
+**Settings → Pages → Source → GitHub Actions**
+
+Then run:
+
+**Actions → Deploy Pages → Run workflow**
+
+The deployment sets the correct project-relative `PUBLIC_URL`.
+
+## Scope
+
+GalleryLens is a front-end product-gallery demo. It does not include inventory, pricing, cart, checkout, analytics, or a backend API.
+
+The source product images are retained from the original repository solely as demo assets.
+
+## License
+
+MIT License.
