@@ -1,0 +1,17 @@
+$bg: #eef1ed;
+$surface: #fbfcfa;
+$surface-2: #e9eee9;
+$ink: #15221f;
+$muted: #6b7773;
+$line: #ccd4d0;
+$accent: #4a7c6f;
+$radius: 1.4rem;
+$shadow: 0 30px 90px rgba(21, 34, 31, .12);
+
+@mixin eyebrow {
+  margin: 0 0 .7rem;
+  color: $accent;
+  font: 800 .72rem ui-monospace, SFMono-Regular, Consolas, monospace;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+}
