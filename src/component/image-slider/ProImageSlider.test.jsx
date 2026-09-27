@@ -4,18 +4,18 @@ import ProImageSlider from "./ProImageSlider";
 jest.mock("swiper/react", () => ({
   Swiper: ({ children }) => <div data-testid="swiper">{children}</div>,
   SwiperSlide: ({ children }) => <div data-testid="swiper-slide">{children}</div>,
-}));
+}), { virtual: true });
 
 jest.mock("swiper/modules", () => ({
   A11y: {},
   Keyboard: {},
   Navigation: {},
   Thumbs: {},
-}));
+}), { virtual: true });
 
-jest.mock("swiper/css", () => ({}));
-jest.mock("swiper/css/navigation", () => ({}));
-jest.mock("swiper/css/thumbs", () => ({}));
+jest.mock("swiper/css", () => ({}), { virtual: true });
+jest.mock("swiper/css/navigation", () => ({}), { virtual: true });
+jest.mock("swiper/css/thumbs", () => ({}), { virtual: true });
 
 const images = [
   {
